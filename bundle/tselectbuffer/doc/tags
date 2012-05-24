@@ -1,0 +1,5 @@
+:TSelectBuffer	tselectbuffer.txt	/*:TSelectBuffer*
+g:tselectbuffer#autopick	tselectbuffer.txt	/*g:tselectbuffer#autopick*
+g:tselectbuffer#order	tselectbuffer.txt	/*g:tselectbuffer#order*
+tselectbuffer#Select()	tselectbuffer.txt	/*tselectbuffer#Select()*
+tselectbuffer.txt	tselectbuffer.txt	/*tselectbuffer.txt*

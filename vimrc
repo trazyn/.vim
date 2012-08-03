@@ -254,11 +254,6 @@ nnoremap <silent> <F8> :lcd %:p:h<CR>:NERDTreeToggle<CR>
 " toggle TSelect with <F2>
 nnoremap <silent> <F2> <ESC>:TSelectBuffer<CR>
 
-" --- Command-T
-" toggle Command-T with <F3>
-let g:CommandTMaxHeight = 15
-" nnoremap <silent> <F3> <ESC><ESC>:CommandT<CR>
-
 " --- Cscope
 " add any datebase of cscope 
 if has("cscope")

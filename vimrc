@@ -56,8 +56,8 @@ if has("gui_running")	" GUI color and font settings
     set guioptions-=m 	" remove the menu bar
 
     set guifont=Pragmata\ Italic\ 8
-    set lines=35	" window height
-    set columns=185	" window width
+    set lines=28	" window height
+    set columns=155	" window width
     
     colors nucolor      " color scheme, donot change the order
     set t_Co=256        " 256 color mode
@@ -125,7 +125,7 @@ fun! Maketags()
     if &filetype == "cpp" || &filetype == "h" || &filetype == "c"
         :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
     else
-        :!ctags -R --extra=+q .
+        ":!ctags -R --extra=+q .
     endif
 endfun
 
@@ -192,15 +192,6 @@ vnoremap > >gv
 " :cd. change working directory to that of the current file
 cmap cd. lcd %:p:h
 
-" Writing Restructured Text (Sphinx Documentation) {
-    " Ctrl-u 1:    underline Parts w/ #'s
-    noremap  <C-u>1 yyPVr#yyjp
-    inoremap <C-u>1 <esc>yyPVr#yyjpA
-    " Ctrl-u 2:    underline Chapters w/ *'s
-    noremap  <C-u>2 yyPVr*yyjp
-    inoremap <C-u>2 <esc>yyPVr*yyjpA
-"}
-
 "--------------------------------------------------------------------------- 
 " PROGRAMMING SHORTCUTS
 "--------------------------------------------------------------------------- 
@@ -254,11 +245,6 @@ nnoremap <silent> <F8> :lcd %:p:h<CR>:NERDTreeToggle<CR>
 " toggle TSelect with <F2>
 nnoremap <silent> <F2> <ESC>:TSelectBuffer<CR>
 
-" --- Command-T
-" toggle Command-T with <F3>
-let g:CommandTMaxHeight = 15
-" nnoremap <silent> <F3> <ESC><ESC>:CommandT<CR>
-
 " --- Cscope
 " add any datebase of cscope 
 if has("cscope")
@@ -280,7 +266,7 @@ let OmniCpp_NamespaceSearch = 2             " search namespaces in this and incl
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 " --- map F12 to generate ctags for current folder:
-autocmd Filetype * set tags=./tags,./TAGS
+autocmd Filetype cpp,c,h set tags=./tags,./TAGS
 autocmd Filetype cpp,c,h call LoadCtags()
 map <F12> :call Maketags()<CR>
 

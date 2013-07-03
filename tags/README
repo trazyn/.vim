@@ -1,2 +1,0 @@
-# Generator the tag file
-ctags -R --c++-kinds=+p --fields=+iaS --extra=+q /usr/include/gtk-2.0/

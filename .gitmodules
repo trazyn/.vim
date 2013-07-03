@@ -43,6 +43,3 @@
 [submodule "bundle/ZoomWin"]
 	path = bundle/ZoomWin
 	url = https://github.com/vim-scripts/ZoomWin.git
-[submodule "bundle/neocomplcache.vim"]
-	path = bundle/neocomplcache.vim
-	url = https://github.com/Shougo/neocomplcache.vim.git

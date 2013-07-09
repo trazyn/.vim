@@ -1,4 +1,3 @@
-
 "-----------------------------------------------------------------------------
 " My vim config
 "-----------------------------------------------------------------------------
@@ -10,11 +9,11 @@
         call pathogen#runtime_append_all_bundles()
         call pathogen#helptags()
 
-        if has ("unix")
-                set clipboard=unnamedplus               " Use (+) register for copy-paste
-        elseif has ("mac")
-                set clipboard=unnamed                   " Use (*) register for copy-paste
-        endif
+	if has ("mac")
+		set clipboard=unnamed 			" Use (*) register for copy-paste
+	else
+		set clipboard=unnamedplus 		" Use (+) register for copy-paste
+	endif
 " }
 
 " General {
@@ -85,7 +84,7 @@
                         set guioptions-=r
                         set guioptions-=b
 
-                        set lines=28
+                        set lines=33
                         set columns=188
                 endif
         " }
@@ -95,7 +94,7 @@
 
                 set t_Co=256
                 set background=light
-                set guifont=Pragmata\ Medium\ 8
+                set guifont=Pragmata:h11
         " }
 " }
 
@@ -107,6 +106,7 @@
 		let NERDTreeDirArrows = 0
 		let NERDTreeHighlightCursorline = 1
 		let NERDTreeShowLineNumbers = 0
+		let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
 		let NERDTreeBookmarksFile = "$HOME/.vim/NREDTreeBookmarks"
 	" }
 	
@@ -114,6 +114,11 @@
 
 		let g:tagbar_autofocus = 1
 		let g:tagbar_iconchars = [ "+", "-" ]
+	" }
+	
+	" CtrlP {
+		
+		set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
 	" }
 
 	" Neocomplcache {
@@ -145,7 +150,12 @@
 		let g:SuperTabDefaultCompletionType = "context"
 	" }
 
-        let g:Powerline_symbols = "fancy"
+        " Power-line {
+		
+		if !has ("mac")
+			let g:Powerline_symbols = "fancy"
+		endif
+        " }
 " }
 
 
@@ -189,12 +199,16 @@
         nmap <leader><leader>a :Ack 
 
         nmap <F1> :CtrlP<CR>
-        nmap <F2> :BuffergatorOpen<CR>
-        nmap <F7> :NERDTreeToggle<CR>
-        nmap <F8> :TagbarToggle<CR>
+	nmap <D-r> :CtrlP<CR>
+        nmap <F2> :BuffergatorToggle<CR>
+	nmap <D-e> :BuffergatorToggle<CR>
+        nmap <F5> :NERDTreeToggle<CR>
+        nmap <F6> :TagbarToggle<CR>
         imap <F1> <ESC>:CtrlP<CR>
-        imap <F2> <ESC>:BuffergatorOpen<CR>
-        imap <F7> <ESC>:NERDTreeToggle<CR>
-        imap <F8> <ESC>:TagbarToggle<CR>
+	imap <D-r> :CtrlP<CR>
+        imap <F2> <ESC>:BuffergatorToggle<CR>
+	imap <D-e> :BuffergatorToggle<CR>
+        imap <F5> <ESC>:NERDTreeToggle<CR>
+        imap <F6> <ESC>:TagbarToggle<CR>
 " }
 

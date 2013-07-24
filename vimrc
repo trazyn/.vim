@@ -74,7 +74,7 @@
 
 " GUI {
 
-        " Window {
+        " Appearance {
         if has ("gui_running")
                         set guioptions-=T
                         set guioptions-=m
@@ -86,15 +86,18 @@
 
                         set lines=33
                         set columns=188
+
+			colors hemisu
+			let g:Powerline_symbols = "fancy"
+
+		else
+			colors nucolor
                 endif
-        " }
 
-        " Theme {
-                colors hemisu
 
-                set t_Co=256
-                set background=light
-                set guifont=Pragmata:h11
+		set t_Co=256
+		set background=light
+		set guifont=Pragmata\ Medium\ 8
         " }
 " }
 
@@ -149,13 +152,6 @@
 
 		let g:SuperTabDefaultCompletionType = "context"
 	" }
-
-        " Power-line {
-		
-		if !has ("mac")
-			let g:Powerline_symbols = "fancy"
-		endif
-        " }
 " }
 
 
@@ -196,19 +192,22 @@
 
         nmap <leader><leader>u :GundoToggle<CR>
 
-        nmap <leader><leader>a :Ack 
-
         nmap <F1> :CtrlP<CR>
-	nmap <D-r> :CtrlP<CR>
         nmap <F2> :BuffergatorToggle<CR>
-	nmap <D-e> :BuffergatorToggle<CR>
         nmap <F5> :NERDTreeToggle<CR>
         nmap <F6> :TagbarToggle<CR>
+
         imap <F1> <ESC>:CtrlP<CR>
-	imap <D-r> :CtrlP<CR>
         imap <F2> <ESC>:BuffergatorToggle<CR>
-	imap <D-e> :BuffergatorToggle<CR>
         imap <F5> <ESC>:NERDTreeToggle<CR>
         imap <F6> <ESC>:TagbarToggle<CR>
+
+        " Mac {
+
+		nmap <D-r> :CtrlP<CR>
+		nmap <D-e> :BuffergatorToggle<CR>
+		imap <D-r> :CtrlP<CR>
+		imap <D-e> :BuffergatorToggle<CR>
+        " }
 " }
 

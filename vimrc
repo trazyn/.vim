@@ -9,11 +9,7 @@
         call pathogen#runtime_append_all_bundles()
         call pathogen#helptags()
 
-	if has ("mac")
-		set clipboard=unnamed 			" Use (*) register for copy-paste
-	else
-		set clipboard=unnamedplus 		" Use (+) register for copy-paste
-	endif
+	set clipboard=unnamed 				" Use (*) register for copy-paste
 " }
 
 " General {
@@ -27,6 +23,7 @@
         set cursorline                                  " Highlight current line
         set history=100                                 " Keep 100 lines of command line history
         set scrolloff=5                                 " Minimum lines to keep above and below cursor
+        set nu 						" Show the line number
         set nowrap                                      " Do not wrap line
         set ruler                                       " Show line and column number
         set confirm                                     " Ask instead of just print error
@@ -84,11 +81,10 @@
                         set guioptions-=r
                         set guioptions-=b
 
-                        set lines=33
-                        set columns=188
+                        set lines=40
+                        set columns=166
 
 			colors hemisu
-			let g:Powerline_symbols = "fancy"
 
 		else
 			colors nucolor
@@ -97,7 +93,7 @@
 
 		set t_Co=256
 		set background=light
-		set guifont=Pragmata\ Medium\ 8
+		set guifont=Pragmata\ Medium:h11
         " }
 " }
 
@@ -172,33 +168,28 @@
                 nmap <leader>v :vsp <C-R>=expand("%:h")."/"<CR>
 
                 " Move {
-                        nmap <A-up> :wincmd k<CR>
-                        nmap <A-down> :wincmd j<CR>
-                        nmap <A-left> :wincmd h<CR>
-                        nmap <A-right> :wincmd l<CR>
+                        nmap <S-up> :wincmd k<CR>
+                        nmap <S-down> :wincmd j<CR>
+                        nmap <S-left> :wincmd h<CR>
+                        nmap <S-right> :wincmd l<CR>
                 " }
         " }
 
         " Upper/Lower {
+        "
                 nmap <leader>u mQviwU`Q
                 nmap <leader>l mQviwu`Q
                 nmap <leader>U mQgewvU`Q
                 nmap <leader>L mQgewvu`Q
         " }
 
-        nmap <leader><leader>q :quit<CR>
-
         nmap <leader><leader>o :ZoomWin<CR>
 
         nmap <leader><leader>u :GundoToggle<CR>
 
-        nmap <F1> :CtrlP<CR>
-        nmap <F2> :BuffergatorToggle<CR>
         nmap <F5> :NERDTreeToggle<CR>
         nmap <F6> :TagbarToggle<CR>
 
-        imap <F1> <ESC>:CtrlP<CR>
-        imap <F2> <ESC>:BuffergatorToggle<CR>
         imap <F5> <ESC>:NERDTreeToggle<CR>
         imap <F6> <ESC>:TagbarToggle<CR>
 

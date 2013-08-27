@@ -46,6 +46,6 @@
 [submodule "bundle/OmniCppComplete"]
 	path = bundle/OmniCppComplete
 	url = https://github.com/vim-scripts/OmniCppComplete.git
-[submodule "cvim-pathogen"]
-	path = cvim-pathogen
-	url = https://github.com/HenningM/cvim-pathogen.git
+[submodule "https:/github.com/HenningM/cvim-pathogen.git"]
+	path = https:/github.com/HenningM/cvim-pathogen.git
+	url = ./bundle/cvim

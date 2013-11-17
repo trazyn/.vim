@@ -72,28 +72,28 @@
 " GUI {
 
         " Appearance {
-        if has ("gui_running")
-                        set guioptions-=T
-                        set guioptions-=m
-                        set guioptions-=L
-                        set guioptions-=l
-                        set guioptions-=R
-                        set guioptions-=r
-                        set guioptions-=b
 
-                        set lines=40
-                        set columns=166
+		set t_Co=256
+		set background=light
+
+		if has ("gui_running")
+			set guioptions-=T
+			set guioptions-=m
+			set guioptions-=L
+			set guioptions-=l
+			set guioptions-=R
+			set guioptions-=r
+			set guioptions-=b
+
+			set lines=40
+			set columns=166
 
 			colors hemisu
 
 		else
 			colors nucolor
-                endif
+		endif
 
-
-		set t_Co=256
-		set background=light
-		set guifont=Pragmata\ Medium:h11
         " }
 " }
 
@@ -190,15 +190,10 @@
         nmap <F5> :NERDTreeToggle<CR>
         nmap <F6> :TagbarToggle<CR>
 
-        imap <F5> <ESC>:NERDTreeToggle<CR>
-        imap <F6> <ESC>:TagbarToggle<CR>
-
         " Mac {
 
 		nmap <D-r> :CtrlP<CR>
 		nmap <D-e> :BuffergatorToggle<CR>
-		imap <D-r> :CtrlP<CR>
-		imap <D-e> :BuffergatorToggle<CR>
         " }
 " }
 

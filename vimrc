@@ -54,6 +54,13 @@
         set wildignore+=*.swp,*~,._*
 " }
 
+" Highlight column {
+
+	au WinLeave * set nocursorline nocursorcolumn
+	au WinEnter * set cursorline cursorcolumn
+	set cursorline cursorcolumn
+" }
+
 " Filetypes {
 
         filetype plugin indent on                       " Turn on plugins
@@ -88,10 +95,11 @@
 			set lines=40
 			set columns=166
 
+			set guifont=Pragmata Medium:h11
 			colors hemisu
 
 		else
-			colors nucolor
+			colors cleanroom
 		endif
 
         " }
@@ -113,6 +121,7 @@
 
 		let g:tagbar_autofocus = 1
 		let g:tagbar_iconchars = [ "+", "-" ]
+		let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
 	" }
 	
 	" CtrlP {

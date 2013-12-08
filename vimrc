@@ -56,9 +56,9 @@
 
 " Highlight column {
 
-	au WinLeave * set nocursorline nocursorcolumn
-	au WinEnter * set cursorline cursorcolumn
-	set cursorline cursorcolumn
+	"au WinLeave * set nocursorline nocursorcolumn
+	"au WinEnter * set cursorline cursorcolumn
+	"set cursorline cursorcolumn
 " }
 
 " Filetypes {
@@ -74,6 +74,8 @@
 
                 au BufRead,BufNewFile *.json setf javascript
         endif
+
+	au FileType javascript call JavaScriptFold()
 " }
 
 " GUI {
@@ -95,7 +97,8 @@
 			set lines=40
 			set columns=166
 
-			set guifont=Pragmata Medium:h11
+			set background=dark
+			set guifont=Envy\ Code\ R:h11
 			colors hemisu
 
 		else
@@ -117,6 +120,12 @@
 		let NERDTreeBookmarksFile = "$HOME/.vim/NREDTreeBookmarks"
 	" }
 	
+	" CtrlP {
+                
+                set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
+		let g:ctrlp_custom_ignore = "\.git$\|\.hg$\|\.svn$"
+        " }
+
 	" Tagbar {
 
 		let g:tagbar_autofocus = 1
@@ -124,12 +133,6 @@
 		let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
 	" }
 	
-	" CtrlP {
-		
-		set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
-		let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-	" }
-
 	" Neocomplcache {
 
 		autocmd Filetype *  				" Use syntax complete if nothing else available
@@ -203,7 +206,7 @@
         " Mac {
 
 		nmap <D-r> :CtrlP<CR>
-		nmap <D-e> :BuffergatorToggle<CR>
+		nmap <D-e> :CtrlBuffer<CR>
         " }
 " }
 

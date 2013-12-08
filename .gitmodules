@@ -25,9 +25,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule "bundle/vim-buffergator"]
-	path = bundle/vim-buffergator
-	url = https://github.com/jeetsukumaran/vim-buffergator.git
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = https://github.com/skammer/vim-css-color.git
@@ -46,6 +43,3 @@
 [submodule "bundle/OmniCppComplete"]
 	path = bundle/OmniCppComplete
 	url = https://github.com/vim-scripts/OmniCppComplete.git
-[submodule "bundle/cvim"]
-	path = bundle/cvim
-	url = https://github.com/HenningM/cvim-pathogen.git

@@ -206,7 +206,7 @@
         " Mac {
 
 		nmap <D-r> :CtrlP<CR>
-		nmap <D-e> :CtrlBuffer<CR>
+		nmap <D-e> :CtrlPBuffer<CR>
         " }
 " }
 

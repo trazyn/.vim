@@ -117,13 +117,14 @@
 		let NERDTreeHighlightCursorline = 1
 		let NERDTreeShowLineNumbers = 0
 		let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
-		let NERDTreeBookmarksFile = "$HOME/.vim/NREDTreeBookmarks"
+		let NERDTreeBookmarksFile = $HOME/".vim/NREDTreeBookmarks"
 	" }
 	
 	" CtrlP {
-                
                 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
-		let g:ctrlp_custom_ignore = "\.git$\|\.hg$\|\.svn$"
+
+		let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+                let g:ctrlp_working_path_mode = 0
         " }
 
 	" Tagbar {

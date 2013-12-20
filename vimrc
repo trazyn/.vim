@@ -46,19 +46,15 @@
         set wildchar=<TAB>                              " Start wild expansion in the command line using <TAB>
         set wildmenu                                    " Wild char completion menu
 
+	set relativenumber 
+	set number
+
         set nolist
         set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
         set wildignore+=*.o,*.out,*.obj,*.git,*.rbc,*.rbo,*.class,.svn,*.gem
         set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
         set wildignore+=*.swp,*~,._*
-" }
-
-" Highlight column {
-
-	"au WinLeave * set nocursorline nocursorcolumn
-	"au WinEnter * set cursorline cursorcolumn
-	"set cursorline cursorcolumn
 " }
 
 " Filetypes {
@@ -74,8 +70,6 @@
 
                 au BufRead,BufNewFile *.json setf javascript
         endif
-
-	au FileType javascript call JavaScriptFold()
 " }
 
 " GUI {
@@ -98,9 +92,13 @@
 			set columns=166
 
 			set background=dark
-			set guifont=Envy\ Code\ R:h11
-			colors hemisu
+			set guifont=Envy\ Code\ R\ for\ powerline:h11
+			
+			colors hybrid
 
+			hi LineNr guibg = #000000
+			hi StatusLine guifg = #000000
+			hi StatusLine guibg = #FFFFFF
 		else
 			colors cleanroom
 		endif
@@ -117,7 +115,7 @@
 		let NERDTreeHighlightCursorline = 1
 		let NERDTreeShowLineNumbers = 0
 		let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
-		let NERDTreeBookmarksFile = $HOME/".vim/NREDTreeBookmarks"
+		let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
 	" }
 	
 	" CtrlP {
@@ -161,6 +159,43 @@
 	" Supertab {
 
 		let g:SuperTabDefaultCompletionType = "context"
+	" }
+
+	" Airline {
+
+		let g:airline_powerline_fonts = 1
+		let g:airline_theme = "molokai"
+		"let g:airline_mode_map = {
+					"\ '__' : '-',
+					"\ 'n'  : 'N',
+					"\ 'i'  : 'I',
+					"\ 'R'  : 'R',
+					"\ 'c'  : 'C',
+					"\ 'v'  : 'V',
+					"\ 'V'  : 'V',
+					"\ '' : 'V',
+					"\ 's'  : 'S',
+					"\ 'S'  : 'S',
+					"\ '' : 'S',
+					"\ }
+		function! GetCwd()
+			let currentdir = substitute(getcwd(), expand("$HOME"), "~", "g")
+			return currentdir
+		endfunction
+
+		function! GetFileSize()
+			let bytes = getfsize(expand("%:p"))
+			if bytes <= 0
+				return ""
+			endif
+			if bytes < 1024
+				return "[" . bytes . " B]"
+			else
+				return "[" . (bytes / 1024) . " kB]"
+			endif
+		endfunction
+
+		let g:airline_section_c = '%t %{GetFileSize()} (%{GetCwd()})'
 	" }
 " }
 

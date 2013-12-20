@@ -165,19 +165,19 @@
 
 		let g:airline_powerline_fonts = 1
 		let g:airline_theme = "molokai"
-		"let g:airline_mode_map = {
-					"\ '__' : '-',
-					"\ 'n'  : 'N',
-					"\ 'i'  : 'I',
-					"\ 'R'  : 'R',
-					"\ 'c'  : 'C',
-					"\ 'v'  : 'V',
-					"\ 'V'  : 'V',
-					"\ '' : 'V',
-					"\ 's'  : 'S',
-					"\ 'S'  : 'S',
-					"\ '' : 'S',
-					"\ }
+		let g:airline_mode_map = {
+					\ '__' : '-',
+					\ 'n'  : 'N',
+					\ 'i'  : 'I',
+					\ 'R'  : 'R',
+					\ 'c'  : 'C',
+					\ 'v'  : 'V',
+					\ 'V'  : 'V',
+					\ '' : 'V',
+					\ 's'  : 'S',
+					\ 'S'  : 'S',
+					\ '' : 'S',
+					\ }
 		function! GetCwd()
 			let currentdir = substitute(getcwd(), expand("$HOME"), "~", "g")
 			return currentdir

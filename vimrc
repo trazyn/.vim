@@ -94,11 +94,10 @@
 			set background=dark
 			set guifont=Envy\ Code\ R\ for\ powerline:h11
 			
-			colors hybrid
+            let g:molokai_original=1
+            let g:rehash256=1
 
-			hi LineNr guibg = #000000
-			hi StatusLine guifg = #000000
-			hi StatusLine guibg = #FFFFFF
+			colors molokai
 		else
 			colors cleanroom
 		endif
@@ -117,6 +116,13 @@
 		let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
 		let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
 	" }
+
+
+	" Indent Guides {
+		let g:indent_guides_start_level = 2
+		let g:indent_guides_guide_size = 1
+	" }
+	
 	
 	" CtrlP {
                 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
@@ -132,30 +138,6 @@
 		let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
 	" }
 	
-	" Neocomplcache {
-
-		autocmd Filetype *  				" Use syntax complete if nothing else available
-				\ if &omnifunc == "" |
-				\ 	setlocal omnifunc = syntaxcomplete#Complete |
-				\ endif
-
-		autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-		autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-		autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-		autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-		autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-		let OmniCpp_GlibalScopeSearch = 1
-		let OmniCpp_ShowAccess = 1
-		let OmniCpp_ShowPrototypeInAbbr = 1     " Show function prototype (i.e. parameters) in popup window
-		let OmniCpp_MayCompleteDot = 1          " Auto complete with .
-		let OmniCpp_MayCompleteArrow = 1        " Auto complete with ->
-		let OmniCpp_MayCompleteScope = 1        " Auto complete with ::
-		let OmniCpp_SelectFirstItem = 2         " Select first item (but don't insert)
-		let OmniCpp_NamespaceSearch = 2         " Search namespaces in this and included files
-		let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-	" }
-
 	" Supertab {
 
 		let g:SuperTabDefaultCompletionType = "context"

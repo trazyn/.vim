@@ -205,7 +205,7 @@
                         nmap <S-right> :wincmd l<CR>
                 " }
         " }
-
+        
         " Upper/Lower {
         "
                 nmap <leader>u mQviwU`Q
@@ -218,8 +218,10 @@
 
         nmap <leader><leader>u :GundoToggle<CR>
 
-        nmap <F5> :NERDTreeToggle<CR>
-        nmap <F6> :TagbarToggle<CR>
+	nmap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
+        nmap <leader>n :NERDTreeToggle<CR>
+        nmap <leader>t :TagbarToggle<CR>
 
         " Mac {
 

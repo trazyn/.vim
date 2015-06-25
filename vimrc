@@ -16,6 +16,9 @@
 
         syntax on
 
+        set expandtab 									" To insert space characters whenever the tab key is pressed
+        set tabstop=4 									" All the tab characters entered will be changed to spaces
+
         set mouse=a                                     " Automatically enable mouse usage
         set mousehide                                   " Hide the mouse cursor while typing
         set laststatus=2                                " Always show the statusline
@@ -23,7 +26,7 @@
         set cursorline                                  " Highlight current line
         set history=100                                 " Keep 100 lines of command line history
         set scrolloff=5                                 " Minimum lines to keep above and below cursor
-        set nu 						" Show the line number
+        set nu 											" Show the line number
         set nowrap                                      " Do not wrap line
         set ruler                                       " Show line and column number
         set confirm                                     " Ask instead of just print error
@@ -70,6 +73,8 @@
 
                 au BufRead,BufNewFile *.json setf javascript
         endif
+
+	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " }
 
 " GUI {
@@ -143,6 +148,12 @@
 		let g:SuperTabDefaultCompletionType = "context"
 	" }
 
+
+	" Emmet {
+		let g:user_emmet_expandabbr_key = '<Tab>'
+		let g:use_emmet_complete_tag = 1
+	" }
+
 	" Airline {
 
 		let g:airline_powerline_fonts = 1
@@ -179,6 +190,8 @@
 
 		let g:airline_section_c = '%t %{GetFileSize()} (%{GetCwd()})'
 	" }
+	
+	let g:syntastic_c_checkers=['']
 " }
 
 
@@ -207,7 +220,6 @@
         " }
         
         " Upper/Lower {
-        "
                 nmap <leader>u mQviwU`Q
                 nmap <leader>l mQviwu`Q
                 nmap <leader>U mQgewvU`Q

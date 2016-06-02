@@ -160,6 +160,17 @@
 		let g:use_emmet_complete_tag = 1
 	" }
 
+    " Indent Line {
+        let g:indentLine_color_term = 239
+
+        "GVim
+        let g:indentLine_color_gui = '#A4E57E'
+
+        " none X terminal
+        let g:indentLine_color_tty_light = 7 " (default: 4)
+        let g:indentLine_color_dark = 1 " (default: 2)
+    " }
+
 	" Airline {
 
 		let g:airline_powerline_fonts = 1
@@ -211,8 +222,8 @@
 	" Toggle wrap
         nmap <leader>tw :set invwrap<CR>:set wrap?<CR>
 
-    " Show current file in the tagbar
-        nmap <leader><leader>cd :NERDTreeCWD<CR>
+    " Reveal file in the tree
+        nmap <leader><leader>cd :NERDTreeFind<CR>
 
 	" Change working directory to that of current file
         nmap <leader>cd :lcd %:p:h<CR>:pwd<CR>

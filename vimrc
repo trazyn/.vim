@@ -16,8 +16,11 @@
 
         syntax on
 
-        set expandtab 									" To insert space characters whenever the tab key is pressed
+        filetype plugin indent on                       " Turn on plugins
+
         set tabstop=4 									" All the tab characters entered will be changed to spaces
+        set shiftwidth=4
+        set expandtab 									" To insert space characters whenever the tab key is pressed
 
         set mouse=a                                     " Automatically enable mouse usage
         set mousehide                                   " Hide the mouse cursor while typing
@@ -36,7 +39,7 @@
         set hidden                                      " Allow buffer switching without saving
         set nospell                                     " Disable spell checking
         set autoread                                    " Automatically read a file that has changed on disk
-        set encoding=utf-8                              " Set default encoding to UTF-8
+        set encoding=utf8                    		    " Set default encoding to UTF-8
 
         set nobackup                                    " No *~backup file
         set noswapfile                                  " No *.swp file
@@ -49,8 +52,8 @@
         set wildchar=<TAB>                              " Start wild expansion in the command line using <TAB>
         set wildmenu                                    " Wild char completion menu
 
-	set relativenumber 
-	set number
+        set relativenumber 
+        set number
 
         set nolist
         set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
@@ -61,8 +64,6 @@
 " }
 
 " Filetypes {
-
-        filetype plugin indent on                       " Turn on plugins
 
         if has ("autocmd")
                 au Filetype make setlocal noexpandtab   " In makefiles, use real tabs, not tabs expanded to spaces
@@ -75,6 +76,7 @@
         endif
 
 	autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+    autocmd BufNewFile,BufRead *.tag setlocal filetype=javascript
 " }
 
 " GUI {
@@ -143,12 +145,16 @@
 		let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
 	" }
 	
+	" Syntastic {
+        let g:syntastic_javascript_checkers = ['eslint']
+        let g:syntastic_javascript_eslint_exec = 'eslint_d'
+	" }
+	
 	" Supertab {
 
 		let g:SuperTabDefaultCompletionType = "context"
 	" }
-
-
+	
 	" Emmet {
 		let g:user_emmet_expandabbr_key = '<Tab>'
 		let g:use_emmet_complete_tag = 1
@@ -192,6 +198,7 @@
 	" }
 	
 	let g:syntastic_c_checkers=['']
+    let g:syntastic_disabled_filetypes=['html']
 " }
 
 
@@ -203,6 +210,9 @@
 
 	" Toggle wrap
         nmap <leader>tw :set invwrap<CR>:set wrap?<CR>
+
+    " Show current file in the tagbar
+        nmap <leader><leader>cd :NERDTreeCWD<CR>
 
 	" Change working directory to that of current file
         nmap <leader>cd :lcd %:p:h<CR>:pwd<CR>

@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/Jack/.vim/bundle'
 let g:netrw_dirhist_2='/Users/Fs3Kuu/Desktop'
 let g:netrw_dirhist_3='/private/etc/paths.d'
 let g:netrw_dirhist_4='/Users/Fs3kuuu/Desktop/nginx/conf'
 let g:netrw_dirhist_5='/Users/Fs3kuuu/.npm'
+let g:netrw_dirhist_6='/Users/Fs3kuuu/.local/share/bower/empty'
+let g:netrw_dirhist_7='/Users/Fs3kuuu/Desktop/patternLock/.git'

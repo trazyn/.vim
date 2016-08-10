@@ -123,13 +123,6 @@
 		let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
 		let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
 	" }
-
-
-	" Indent Guides {
-		let g:indent_guides_start_level = 2
-		let g:indent_guides_guide_size = 1
-	" }
-	
 	
 	" CtrlP {
                 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
@@ -155,21 +148,17 @@
 		let g:SuperTabDefaultCompletionType = "context"
 	" }
 	
+	" Indent Guides {
+
+		let g:indent_guides_start_level = 2
+		let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
+	" }
+	
 	" Emmet {
 		let g:user_emmet_expandabbr_key = '<Tab>'
 		let g:use_emmet_complete_tag = 1
 	" }
-
-    " Indent Line {
-        let g:indentLine_color_term = 239
-
-        "GVim
-        let g:indentLine_color_gui = '#A4E57E'
-
-        " none X terminal
-        let g:indentLine_color_tty_light = 7 " (default: 4)
-        let g:indentLine_color_dark = 1 " (default: 2)
-    " }
 
 	" Airline {
 

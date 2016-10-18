@@ -55,3 +55,6 @@
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/vim-coffee"]
+	path = bundle/vim-coffee
+	url = https://github.com/kchmck/vim-coffee-script.git

@@ -99,7 +99,7 @@
 			set columns=166
 
 			set background=dark
-			set guifont=Envy\ Code\ R\ for\ powerline:h11
+			set guifont=Envy\ Code\ R\ for\ powerline:h12
 			
             let g:molokai_original=1
             let g:rehash256=1

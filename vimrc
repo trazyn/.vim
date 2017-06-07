@@ -245,7 +245,6 @@
 
             nmap <D-e> :CtrlP<CR>
             nmap <D-r> :CtrlPBuffer<CR>
-            nmap <D-f> :CtrlPMixed<CR>
         " }
 " }
 

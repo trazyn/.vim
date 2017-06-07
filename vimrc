@@ -135,13 +135,6 @@
                     \ }
     " }
 
-    " Tagbar {
-
-    let g:tagbar_autofocus = 1
-    let g:tagbar_iconchars = [ "+", "-" ]
-    let g:tagbar_ctags_bin = "/usr/local/Cellar/ctags/5.8/bin/ctags"
-	" }
-
 	" Syntastic {
         let g:syntastic_javascript_checkers = ['eslint']
         let g:syntastic_javascript_eslint_exec = 'eslint_d'

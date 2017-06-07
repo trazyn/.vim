@@ -24,7 +24,7 @@
 	url = https://github.com/Lokaltog/vim-easymotion.git
 [submodule "bundle/vim-matchit"]
 	path = bundle/vim-matchit
-	url = https://github.com/edsono/vim-matchit.git
+	url = https://github.com/adelarsq/vim-matchit.git
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git

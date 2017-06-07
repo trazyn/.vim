@@ -128,7 +128,11 @@
         set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
         set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-        let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+        let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -co |& egrep -v "\.(png|jpg|jpeg|gif)$|node_modules"']
+
+        if filereadable(".ctrlpignore")
+            let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat .ctrlpignore`"'
+        endif
     " }
 
 	" Syntastic {
@@ -239,8 +243,9 @@
 
         " Mac {
 
-            nmap <D-r> :CtrlP<CR>
-            nmap <D-e> :CtrlPBuffer<CR>
+            nmap <D-e> :CtrlP<CR>
+            nmap <D-r> :CtrlPBuffer<CR>
+            nmap <D-f> :CtrlPMixed<CR>
         " }
 " }
 

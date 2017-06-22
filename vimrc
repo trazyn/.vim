@@ -243,8 +243,8 @@
 
         " Mac {
 
-            nmap <D-e> :CtrlP<CR>
-            nmap <D-r> :CtrlPBuffer<CR>
+            nmap <D-r> :CtrlP<CR>
+            nmap <D-e> :CtrlPBuffer<CR>
         " }
 " }
 

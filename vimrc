@@ -157,7 +157,6 @@
 	" }
 
 	" Airline {
-
         let g:airline_powerline_fonts = 1
         let g:airline_theme = "molokai"
         let g:airline_mode_map = {
@@ -243,8 +242,8 @@
 
         " Mac {
 
-            nmap <D-e> :CtrlP<CR>
-            nmap <D-r> :CtrlPBuffer<CR>
+            nmap <D-r> :CtrlP<CR>
+            nmap <D-e> :CtrlPBuffer<CR>
         " }
 " }
 

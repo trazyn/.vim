@@ -55,9 +55,6 @@
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "bundle/vim-coffee"]
-	path = bundle/vim-coffee
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/tern_for_vim"]
 	path = bundle/tern_for_vim
 	url = https://github.com/ternjs/tern_for_vim.git

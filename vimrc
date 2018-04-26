@@ -198,7 +198,7 @@
 
 
 " Key mapping {
-        let mapleader = ","
+    let mapleader = ","
 
 	" Turn off search highlight
         nmap <leader>/ :nohl<CR>
@@ -211,6 +211,9 @@
 
 	" Change working directory to that of current file
         nmap <leader>cd :lcd %:p:h<CR>:pwd<CR>
+
+        nmap <leader>n :NERDTreeToggle<CR>
+        nmap <leader>m :TagbarToggle<CR>
 
         " Split {
             nmap <leader>s :sp <C-R>=expand("%:h")."/"<CR>
@@ -231,17 +234,7 @@
             nmap <leader>L mQgewvu`Q
         " }
 
-        nmap <leader><leader>o :ZoomWin<CR>
-
-        nmap <leader><leader>u :GundoToggle<CR>
-
-        nmap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
-
-        nmap <leader>n :NERDTreeToggle<CR>
-        nmap <leader>t :TagbarToggle<CR>
-
         " Mac {
-
             nmap <D-r> :CtrlP<CR>
             nmap <D-e> :CtrlPBuffer<CR>
         " }

@@ -128,15 +128,19 @@
         set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
         set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-        let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -co |& egrep -v "\.(png|jpg|jpeg|gif)$|node_modules"']
+        let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden -g "" --depth 3'
 
         if filereadable(".ctrlpignore")
-            let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat .ctrlpignore`"'
+            let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden -g "" --depth 3 | grep -v "`cat .ctrlpignore`"'
         endif
     " }
 
 	" Supertab {
         let g:SuperTabDefaultCompletionType = "context"
+	" }
+
+	" Indent Guides {
+        let g:indent_guides_enable_on_vim_startup = 1
 	" }
 
 	" Emmet {

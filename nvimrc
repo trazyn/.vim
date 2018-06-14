@@ -8,7 +8,8 @@
     set rtp+=/usr/local/opt/fzf
 
     call plug#begin('~/.config/nvim/plugged')
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'scrooloose/nerdtree'
+    Plug 'mhinz/vim-signify'
     Plug 'flazz/vim-colorschemes'
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
@@ -23,13 +24,18 @@
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'pangloss/vim-javascript'
     Plug 'jelera/vim-javascript-syntax'
+    Plug 'othree/yajs'
     Plug 'mxw/vim-jsx'
     Plug 'tpope/vim-fugitive'
     Plug 'SirVer/ultisnips'
     Plug 'epilande/vim-es2015-snippets'
     Plug 'epilande/vim-react-snippets'
     Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+
     call plug#end()
 " }
 
@@ -102,31 +108,32 @@
 " }
 
 " GUI {
-    set t_Co=256
-    set background=light
 
-    if has ("gui_running")
-        set guioptions-=T
-        set guioptions-=m
-        set guioptions-=L
-        set guioptions-=l
-        set guioptions-=R
-        set guioptions-=r
-        set guioptions-=b
+" Appearance {
 
-        set lines=40
-        set columns=166
+        set t_Co=256
+        set background=light
 
-        set background=dark
-        set guifont=Envy\ Code\ R\ for\ powerline:h13
+        if has ("gui_running")
+            set guioptions-=T
+            set guioptions-=m
+            set guioptions-=L
+            set guioptions-=l
+            set guioptions-=R
+            set guioptions-=r
+            set guioptions-=b
 
-        let g:molokai_original=1
-        let g:rehash256=1
-    else
-        colors cleanroom
-    endif
+            set lines=40
+            set columns=166
 
-    colorscheme molokai
+            set guifont=Envy\ Code\ R\ for\ powerline:h13
+
+            let g:molokai_original=1
+            let g:rehash256=1
+        endif
+
+        colorscheme monokai-chris
+    " }
 " }
 
 " Plugins {
@@ -187,7 +194,9 @@
         let g:SuperTabDefaultCompletionType = "context"
 	" }
 
-    " Indent Guides {
+	" Indent Guides {
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
 	" }
 
@@ -208,7 +217,7 @@
 
 	" Airline {
         let g:airline_powerline_fonts = 1
-        let g:airline_theme = "molokai"
+        let g:airline_theme = "aurora"
         let g:airline_mode_map = {
 					\ '__' : '-',
 					\ 'n'  : 'N',
@@ -240,6 +249,23 @@
         endfunction
 
         let g:airline_section_c = '%t %{GetFileSize()} (%{GetCwd()})'
+
+        function! AccentDemo()
+            let keys = ['a','b','c','d','e','f','g','h']
+            for k in keys
+                call airline#parts#define_text(k, k)
+            endfor
+            call airline#parts#define_accent('a', 'red')
+            call airline#parts#define_accent('b', 'green')
+            call airline#parts#define_accent('c', 'blue')
+            call airline#parts#define_accent('d', 'yellow')
+            call airline#parts#define_accent('e', 'orange')
+            call airline#parts#define_accent('f', 'purple')
+            call airline#parts#define_accent('g', 'bold')
+            call airline#parts#define_accent('h', 'italic')
+            let g:airline_section_a = airline#section#create(keys)
+        endfunction
+        autocmd VimEnter * call AccentDemo()
 	" }
 
     let g:syntastic_c_checkers=['']
@@ -289,5 +315,3 @@
             nmap <D-e> :Buffers<CR>
         " }
 " }
-
-

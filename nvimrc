@@ -16,7 +16,6 @@
     Plug 'w0rp/ale'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mattn/emmet-vim'
-    Plug 'Yggdroot/indentLine'
     Plug 'Valloric/MatchTagAlways'
     Plug 'scrooloose/nerdcommenter'
     Plug 'ervandew/supertab'

@@ -16,7 +16,6 @@
     Plug 'w0rp/ale'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'mattn/emmet-vim'
-    Plug 'Valloric/MatchTagAlways'
     Plug 'scrooloose/nerdcommenter'
     Plug 'ervandew/supertab'
     Plug 'majutsushi/tagbar'
@@ -202,16 +201,6 @@
 	" Emmet {
 		let g:user_emmet_expandabbr_key = '<Tab>'
 		let g:use_emmet_complete_tag = 1
-	" }
-
-	" MatchTagAlways {
-        let g:mta_use_matchparen_group = 1
-        let g:mta_filetypes = {
-                    \ 'html' : 1,
-                    \ 'xhtml' : 1,
-                    \ 'xml' : 1,
-                    \ 'jinja' : 1,
-                    \}
 	" }
 
 	" Airline {

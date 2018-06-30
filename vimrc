@@ -1,4 +1,5 @@
 "-----------------------------------------------------------------------------
+
 " My vim config
 "-----------------------------------------------------------------------------
 
@@ -127,11 +128,25 @@
 	" CtrlP {
         set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
         set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+        let g:ctrlp_switch_buffer = 'et'
+        let g:ctrlp_custom_ignore = {
+                    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+                    \ 'file': '\v\.(exe|so|dll)$',
+                    \ 'link': 'some_bad_symbolic_links',
+                    \ }
 
-        let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden -g "" --depth 3'
 
-        if filereadable(".ctrlpignore")
-            let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden -g "" --depth 3 | grep -v "`cat .ctrlpignore`"'
+        if executable('ag')
+            set grepprg=ag\ --nogroup\ --nocolor
+
+            nnoremap <silent> t :CtrlP<cr>
+
+            let g:ctrlp_match_window = 'bottom,order:ttb'
+            let g:ctrlp_switch_buffer = 0
+            let g:ctrlp_working_path_mode = 'ra'
+            let g:ctrlp_use_caching = 0
+            let g:ctrlp_user_command = ['ag %s --files-with-matches -g ""']
+            let g:ctrlp_user_command += ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
         endif
     " }
 
@@ -150,7 +165,7 @@
 
 	" Airline {
         let g:airline_powerline_fonts = 1
-        let g:airline_theme = "molokai"
+        let g:airline_theme = "kolor"
         let g:airline_mode_map = {
 					\ '__' : '-',
 					\ 'n'  : 'N',
@@ -182,10 +197,24 @@
         endfunction
 
         let g:airline_section_c = '%t %{GetFileSize()} (%{GetCwd()})'
-	" }
 
-    let g:syntastic_c_checkers=['']
-    let g:syntastic_disabled_filetypes=['html']
+        function! AccentDemo()
+            let keys = ['a','b','c','d','e','f','g','h']
+            for k in keys
+                call airline#parts#define_text(k, k)
+            endfor
+            call airline#parts#define_accent('a', 'red')
+            call airline#parts#define_accent('b', 'green')
+            call airline#parts#define_accent('c', 'blue')
+            call airline#parts#define_accent('d', 'yellow')
+            call airline#parts#define_accent('e', 'orange')
+            call airline#parts#define_accent('f', 'purple')
+            call airline#parts#define_accent('g', 'bold')
+            call airline#parts#define_accent('h', 'italic')
+            let g:airline_section_a = airline#section#create(keys)
+        endfunction
+        autocmd VimEnter * call AccentDemo()
+	" }
 " }
 
 

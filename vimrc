@@ -125,6 +125,13 @@
         let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
 	" }
 
+    " NERD Commenter {
+        let g:NERDSpaceDelims = 1
+        let g:NERDCompactSexyComs = 1
+        let g:NERDCommentEmptyLines = 1
+        let g:NERDTrimTrailingWhitespace = 1
+	" }
+
 	" CtrlP {
         set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
         set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows

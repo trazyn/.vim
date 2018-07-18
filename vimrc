@@ -168,6 +168,12 @@
 		let g:use_emmet_complete_tag = 1
 	" }
 
+	" Python Mode {
+		let g:pymode_folding = 0
+		let g:pymode_rope = 0
+
+	" }
+
 	" Airline {
         let g:airline_powerline_fonts = 1
         let g:airline_theme = "kolor"

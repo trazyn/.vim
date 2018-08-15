@@ -1,14 +1,48 @@
-"-----------------------------------------------------------------------------
 
-" My vim config
-"-----------------------------------------------------------------------------
+                 " ________________
+                " |                |_____    __
+                " |  My MacVim:)   |     |__|  |_________
+                " |________________|     |::|  |        /
+   " /\**/\       |                \.____|::|__|      <
+  " ( o_o  )_     |                      \::/  \._______\
+   " (u--u   \_)  |
+    " (||___   )==\
+  " ,dP"/b/=( /P"/b\
+  " |8 || 8\=== || 8
+  " `b,  ,P  `b,  ,P
+    " """`     """`
 
 " Environment {
-
     set nocompatible
 
-    call pathogen#runtime_append_all_bundles()
-    call pathogen#helptags()
+    call plug#begin('~/.vim/plugged')
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'ervandew/supertab'
+    Plug 'adelarsq/vim-matchit'
+    Plug 'majutsushi/tagbar'
+    Plug 'Lokaltog/vim-easymotion'
+    Plug 'jelera/vim-javascript-syntax'
+    Plug 'bling/vim-airline'
+    Plug 'mattn/emmet-vim'
+    Plug 'w0rp/ale'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'Valloric/MatchTagAlways'
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'python-mode/python-mode'
+    Plug 'SirVer/ultisnips'
+    Plug 'epilande/vim-es2015-snippets'
+    Plug 'epilande/vim-react-snippets'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+    call plug#end()
 
 	set clipboard=unnamed                     " Use (*) register for copy-paste
 " }

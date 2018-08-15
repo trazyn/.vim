@@ -10,48 +10,48 @@
     call pathogen#runtime_append_all_bundles()
     call pathogen#helptags()
 
-	set clipboard=unnamed 				" Use (*) register for copy-paste
+	set clipboard=unnamed                     " Use (*) register for copy-paste
 " }
 
 " General {
 
     syntax on
 
-    filetype plugin indent on                       " Turn on plugins
+    filetype plugin indent on                 " Turn on plugins
 
-    set tabstop=4 									" All the tab characters entered will be changed to spaces
+    set tabstop=4                             " All the tab characters entered will be changed to spaces
     set shiftwidth=4
-    set expandtab 									" To insert space characters whenever the tab key is pressed
+    set expandtab                             " To insert space characters whenever the tab key is pressed
 
-    set mouse=a                                     " Automatically enable mouse usage
-    set mousehide                                   " Hide the mouse cursor while typing
-    set laststatus=2                                " Always show the statusline
-    set showcmd                                     " Show the enter command
-    set cursorline                                  " Highlight current line
-    set history=100                                 " Keep 100 lines of command line history
-    set scrolloff=5                                 " Minimum lines to keep above and below cursor
-    set nu 											" Show the line number
-    set nowrap                                      " Do not wrap line
-    set ruler                                       " Show line and column number
-    set confirm                                     " Ask instead of just print error
-    set showmatch                                   " Cursor show matching ) and }
-    set autoindent                                  " Automatically indent
-    set copyindent                                  " Copy the previous indentation on auto indenting
-    set hidden                                      " Allow buffer switching without saving
-    set nospell                                     " Disable spell checking
-    set autoread                                    " Automatically read a file that has changed on disk
-    set encoding=utf8                    		    " Set default encoding to UTF-8
+    set mouse=a                               " Automatically enable mouse usage
+    set mousehide                             " Hide the mouse cursor while typing
+    set laststatus=2                          " Always show the statusline
+    set showcmd                               " Show the enter command
+    set cursorline                            " Highlight current line
+    set history=100                           " Keep 100 lines of command line history
+    set scrolloff=5                           " Minimum lines to keep above and below cursor
+    set nu                                    " Show the line number
+    set nowrap                                " Do not wrap line
+    set ruler                                 " Show line and column number
+    set confirm                               " Ask instead of just print error
+    set showmatch                             " Cursor show matching ) and }
+    set autoindent                            " Automatically indent
+    set copyindent                            " Copy the previous indentation on auto indenting
+    set hidden                                " Allow buffer switching without saving
+    set nospell                               " Disable spell checking
+    set autoread                              " Automatically read a file that has changed on disk
+    set encoding=utf8                         " Set default encoding to UTF-8
 
-    set nobackup                                    " No *~backup file
-    set noswapfile                                  " No *.swp file
+    set nobackup                              " No *~backup file
+    set noswapfile                            " No *.swp file
 
-    set incsearch                                   " Incremental search
-    set hlsearch                                    " Highlight search
-    set ignorecase                                  " Ignore case when searching
-    set smartcase                                   " Ignore case if search pattern is all lowercase, case-sensitive otherwise
+    set incsearch                             " Incremental search
+    set hlsearch                              " Highlight search
+    set ignorecase                            " Ignore case when searching
+    set smartcase                             " Ignore case if search pattern is all lowercase, case-sensitive otherwise
 
-    set wildchar=<TAB>                              " Start wild expansion in the command line using <TAB>
-    set wildmenu                                    " Wild char completion menu
+    set wildchar=<TAB>                        " Start wild expansion in the command line using <TAB>
+    set wildmenu                              " Wild char completion menu
 
     set relativenumber
     set number
@@ -67,8 +67,7 @@
 " Filetypes {
 
     if has ("autocmd")
-        au Filetype make setlocal noexpandtab   " In makefiles, use real tabs, not tabs expanded to spaces
-
+        au Filetype make setlocal noexpandtab " In makefiles, use real tabs, not tabs expanded to spaces
         au BufRead,BufNewFile {Gemfile,Rakefile,*.rake} setf ruby
 
         au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdb,txt} setf markdown

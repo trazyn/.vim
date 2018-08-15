@@ -101,7 +101,6 @@
 
             set background=dark
             set guifont=Envy\ Code\ R\ for\ powerline:h13
-
             let g:rehash256=1
             colors molokai
         else
@@ -172,7 +171,6 @@
 	" Python Mode {
 		let g:pymode_folding = 0
 		let g:pymode_rope = 0
-
 	" }
 
 	" Airline {
@@ -241,6 +239,10 @@
                     \ 'Ignored'   : '\#',
                     \ "Unknown"   : "!"
                     \ }
+	" }
+
+	" UltiSnips {
+        let g:UltiSnipsSnippetDirectories = ['~/.vim/snippets']
 	" }
 " }
 

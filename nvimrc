@@ -9,13 +9,11 @@
 
     call plug#begin('~/.config/nvim/plugged')
     Plug 'scrooloose/nerdtree'
-    Plug 'mhinz/vim-signify'
     Plug 'flazz/vim-colorschemes'
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'w0rp/ale'
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'mattn/emmet-vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'ervandew/supertab'
     Plug 'majutsushi/tagbar'
@@ -23,16 +21,17 @@
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'pangloss/vim-javascript'
     Plug 'jelera/vim-javascript-syntax'
-    Plug 'othree/yajs'
     Plug 'mxw/vim-jsx'
-    Plug 'tpope/vim-fugitive'
     Plug 'SirVer/ultisnips'
     Plug 'epilande/vim-es2015-snippets'
     Plug 'epilande/vim-react-snippets'
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
+    Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     call plug#end()
 " }
@@ -112,7 +111,7 @@
         set t_Co=256
         set background=light
 
-        if has ("gui_running")
+        if has("gui_macvim") || has("gui_vimr")
             set guioptions-=T
             set guioptions-=m
             set guioptions-=L
@@ -142,8 +141,13 @@
         let NERDTreeDirArrows = 0
         let NERDTreeHighlightCursorline = 1
         let NERDTreeShowLineNumbers = 0
-        let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$', '\node_modules$']
+        let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
         let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
+	" }
+
+	" Python Mode {
+		let g:pymode_folding = 0
+		let g:pymode_rope = 0
 	" }
 
 	" fzf {
@@ -190,22 +194,16 @@
 
 	" Supertab {
         let g:SuperTabDefaultCompletionType = "context"
+        let g:SuperTabClosePreviewOnPopupClose = 1
 	" }
 
 	" Indent Guides {
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
-	" }
-
-	" Emmet {
-		let g:user_emmet_expandabbr_key = '<Tab>'
-		let g:use_emmet_complete_tag = 1
 	" }
 
 	" Airline {
         let g:airline_powerline_fonts = 1
-        let g:airline_theme = "aurora"
+        let g:airline_theme = "kolor"
         let g:airline_mode_map = {
 					\ '__' : '-',
 					\ 'n'  : 'N',
@@ -256,8 +254,20 @@
         autocmd VimEnter * call AccentDemo()
 	" }
 
-    let g:syntastic_c_checkers=['']
-    let g:syntastic_disabled_filetypes=['html']
+	" Nerdtree Git Plugin {
+        let g:NERDTreeIndicatorMapCustom = {
+                    \ "Modified"  : "⌘",
+                    \ "Staged"    : "@",
+                    \ "Untracked" : "*",
+                    \ "Renamed"   : "→",
+                    \ "Unmerged"  : "=",
+                    \ "Deleted"   : "←",
+                    \ "Dirty"     : "↓",
+                    \ "Clean"     : "↑",
+                    \ 'Ignored'   : '\#',
+                    \ "Unknown"   : "!"
+                    \ }
+	" }
 " }
 
 

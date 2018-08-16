@@ -41,7 +41,6 @@
     Plug 'epilande/vim-react-snippets'
     Plug 'junegunn/vim-easy-align'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
     call plug#end()
 
 	set clipboard=unnamed                     " Use (*) register for copy-paste

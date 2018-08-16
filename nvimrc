@@ -1,6 +1,16 @@
-"-----------------------------------------------------------------------------
-" My vim config
-"-----------------------------------------------------------------------------
+
+                 " ________________
+                " |                |_____    __
+                " |  My VimR:)     |     |__|  |_________
+                " |________________|     |::|  |        /
+   " /\**/\       |                \.____|::|__|      <
+  " ( o_o  )_     |                      \::/  \._______\
+   " (u--u   \_)  |
+    " (||___   )==\
+  " ,dP"/b/=( /P"/b\
+  " |8 || 8\=== || 8
+  " `b,  ,P  `b,  ,P
+    " """`     """`
 
 " Environment {
 
@@ -10,6 +20,7 @@
     call plug#begin('~/.config/nvim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'flazz/vim-colorschemes'
+    Plug 'drewtempelmeyer/palenight.vim'
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'w0rp/ale'
@@ -17,22 +28,16 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'ervandew/supertab'
     Plug 'majutsushi/tagbar'
-    Plug 'vim-airline/vim-airline'
+    Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'jelera/vim-javascript-syntax'
-    Plug 'mxw/vim-jsx'
     Plug 'SirVer/ultisnips'
-    Plug 'epilande/vim-es2015-snippets'
-    Plug 'epilande/vim-react-snippets'
-    Plug 'drewtempelmeyer/palenight.vim'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
     call plug#end()
 " }
 
@@ -107,7 +112,6 @@
 " GUI {
 
 " Appearance {
-
         set t_Co=256
         set background=light
 
@@ -122,14 +126,9 @@
 
             set lines=40
             set columns=166
-
-            set guifont=Envy\ Code\ R\ for\ powerline:h13
-
-            let g:molokai_original=1
-            let g:rehash256=1
         endif
 
-        colorscheme monokai-chris
+        colorscheme palenight
     " }
 " }
 
@@ -202,7 +201,6 @@
 	" }
 
 	" Airline {
-        let g:airline_powerline_fonts = 1
         let g:airline_theme = "kolor"
         let g:airline_mode_map = {
 					\ '__' : '-',

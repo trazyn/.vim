@@ -38,6 +38,8 @@
     Plug 'tpope/vim-fugitive'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'sebdah/vim-delve'
     call plug#end()
 " }
 
@@ -147,6 +149,40 @@
 	" Python Mode {
 		let g:pymode_folding = 0
 		let g:pymode_rope = 0
+	" }
+
+	" Ale {
+        let g:ale_linters = {'go': ['gometalinter']}
+	" }
+
+	" Deoplete {
+        set completeopt-=preview
+        let g:deoplete#enable_at_startup = 1
+
+	" }
+
+	" Vim Go {
+        let g:go_fmt_fail_silently = 1
+        let g:go_highlight_build_constraints = 1
+        let g:go_highlight_extra_types = 1
+        let g:go_highlight_fields = 1
+        let g:go_highlight_functions = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_structs = 1
+        let g:go_highlight_types = 1
+        let g:go_auto_sameids = 1
+        let g:go_auto_type_info = 1
+        let g:go_addtags_transform = "snakecase"
+        let g:go_fmt_command = "goimports"
+
+        au FileType go nmap <D-d> :GoDeclsDir<cr>
+        au FileType go nmap <leader><leader>g <Plug>(go-def)
+        au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+        au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+        au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+        au FileType go nmap <leader>gt :GoTest -short<cr>
+        au FileType go nmap <leader>gg :GoCoverageToggle -short<cr>
 	" }
 
 	" fzf {
@@ -309,5 +345,6 @@
         " Mac {
             nmap <D-r> :Files<CR>
             nmap <D-e> :Buffers<CR>
+            nmap <D-l> :Ag<CR>
         " }
 " }

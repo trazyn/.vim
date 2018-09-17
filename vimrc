@@ -20,6 +20,8 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'ervandew/supertab'
+    Plug 'kristijanhusak/vim-hybrid-material'
+    Plug 'drewtempelmeyer/palenight.vim'
     Plug 'adelarsq/vim-matchit'
     Plug 'majutsushi/tagbar'
     Plug 'Lokaltog/vim-easymotion'
@@ -34,13 +36,10 @@
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'Vimjas/vim-python-pep8-indent'
-    Plug 'python-mode/python-mode'
     Plug 'SirVer/ultisnips'
     Plug 'epilande/vim-es2015-snippets'
     Plug 'epilande/vim-react-snippets'
     Plug 'junegunn/vim-easy-align'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     call plug#end()
 
 	set clipboard=unnamed                     " Use (*) register for copy-paste
@@ -131,10 +130,9 @@
             set lines=40
             set columns=166
 
-            set background=dark
             set guifont=Envy\ Code\ R\ for\ powerline:h13
-            let g:rehash256=1
-            colors molokai
+            set background=dark
+            colorscheme palenight
         else
             colors cleanroom
         endif
@@ -198,11 +196,6 @@
 	" Emmet {
 		let g:user_emmet_expandabbr_key = '<Tab>'
 		let g:use_emmet_complete_tag = 1
-	" }
-
-	" Python Mode {
-		let g:pymode_folding = 0
-		let g:pymode_rope = 0
 	" }
 
 	" Airline {

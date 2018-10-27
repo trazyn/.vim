@@ -18,7 +18,7 @@
     call plug#begin('~/.vim/plugged')
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'scrooloose/nerdtree'
     Plug 'ervandew/supertab'
     Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'drewtempelmeyer/palenight.vim'
@@ -36,9 +36,6 @@
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'SirVer/ultisnips'
-    Plug 'epilande/vim-es2015-snippets'
-    Plug 'epilande/vim-react-snippets'
     Plug 'junegunn/vim-easy-align'
     call plug#end()
 
@@ -264,10 +261,6 @@
                     \ 'Ignored'   : '\#',
                     \ "Unknown"   : "!"
                     \ }
-	" }
-
-	" UltiSnips {
-        let g:UltiSnipsSnippetDirectories = ['~/.vim/snippets']
 	" }
 " }
 

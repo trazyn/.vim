@@ -37,9 +37,9 @@
     Plug 'tpope/vim-fugitive'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'sebdah/vim-delve'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-go', { 'do': 'make'}
-    Plug 'sebdah/vim-delve'
     call plug#end()
 " }
 
@@ -154,11 +154,10 @@
 	" Ale {
         let g:ale_linters = {'go': ['gometalinter']}
 	" }
-
+	
 	" Deoplete {
         set completeopt-=preview
         let g:deoplete#enable_at_startup = 1
-
 	" }
 
 	" Vim Go {
@@ -171,7 +170,9 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_structs = 1
         let g:go_highlight_types = 1
+        let g:go_version_warning = 0
         let g:go_auto_sameids = 0
+        " let g:go_fmt_command = "goimports"
 
         au FileType go nmap <D-d> :GoDeclsDir<cr>
         au FileType go nmap <leader><leader>g <Plug>(go-def)

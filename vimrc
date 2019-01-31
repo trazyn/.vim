@@ -37,6 +37,7 @@
     Plug 'airblade/vim-gitgutter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'junegunn/vim-easy-align'
+    Plug 'mileszs/ack.vim'
     call plug#end()
 
 	set clipboard=unnamed                     " Use (*) register for copy-paste
@@ -124,8 +125,8 @@
             set guioptions-=r
             set guioptions-=b
 
-            set lines=40
-            set columns=166
+            set lines=72
+            set columns=340
 
             set guifont=Envy\ Code\ R\ for\ powerline:h13
             set background=dark
@@ -276,12 +277,6 @@
 
     " Reveal file in the tree
         nmap <leader><leader>cd :NERDTreeFind<CR>
-
-    " Start interactive EasyAlign in visual mode (e.g. vipga)
-        xmap ga <Plug>(EasyAlign)
-
-    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-        nmap ga <Plug>(EasyAlign)
 
 	" Change working directory to that of current file
         nmap <leader>cd :lcd %:p:h<CR>:pwd<CR>

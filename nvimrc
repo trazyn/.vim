@@ -29,6 +29,8 @@
     Plug 'ervandew/supertab'
     Plug 'majutsushi/tagbar'
     Plug 'bling/vim-airline'
+    Plug 'jelera/vim-javascript-syntax'
+    Plug 'mattn/emmet-vim'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
     Plug 'nathanaelkane/vim-indent-guides'
@@ -40,6 +42,9 @@
     Plug 'sebdah/vim-delve'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-go', { 'do': 'make'}
+    Plug 'paroxayte/vwm.vim'
+    Plug 'mhinz/vim-startify'
+    Plug 'matze/vim-move'
     call plug#end()
 " }
 
@@ -172,7 +177,8 @@
         let g:go_highlight_types = 1
         let g:go_version_warning = 0
         let g:go_auto_sameids = 0
-        " let g:go_fmt_command = "goimports"
+        let g:go_addtags_transform = "camelcase"
+        let g:go_fmt_command = "goimports"
 
         au FileType go nmap <D-d> :GoDeclsDir<cr>
         au FileType go nmap <leader><leader>g <Plug>(go-def)
@@ -232,6 +238,10 @@
 
 	" Indent Guides {
         let g:indent_guides_enable_on_vim_startup = 1
+	" }
+
+	" Vim move {
+        let g:move_key_modifier = 'C'
 	" }
 
 	" Airline {

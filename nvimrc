@@ -151,15 +151,17 @@
         let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
 	" }
 
+	" Ale {
+        let g:ale_linters = {'go': ['golangci-lint']}
+        let g:ale_go_golangci_lint_package = 1
+        let g:ale_go_golangci_lint_options = '--fast'
+	" }
+
 	" Python Mode {
 		let g:pymode_folding = 0
 		let g:pymode_rope = 0
 	" }
 
-	" Ale {
-        let g:ale_linters = {'go': ['gometalinter']}
-	" }
-	
 	" Deoplete {
         set completeopt-=preview
         let g:deoplete#enable_at_startup = 1

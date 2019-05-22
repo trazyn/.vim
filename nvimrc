@@ -40,11 +40,14 @@
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'sebdah/vim-delve'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
     Plug 'paroxayte/vwm.vim'
     Plug 'mhinz/vim-startify'
     Plug 'matze/vim-move'
+    Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+    " Or install latest release tag
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+    " Or build from source code
+    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
     call plug#end()
 " }
 
@@ -152,19 +155,15 @@
 	" }
 
 	" Ale {
-        let g:ale_linters = {'go': ['golangci-lint']}
+        let g:ale_linters = {'go': ['golangci-lint'], 'javascript': ['eslint']}
         let g:ale_go_golangci_lint_package = 1
         let g:ale_go_golangci_lint_options = '--fast'
+        let g:ale_javascript_prettier_use_local_config = 1
 	" }
 
 	" Python Mode {
 		let g:pymode_folding = 0
 		let g:pymode_rope = 0
-	" }
-
-	" Deoplete {
-        set completeopt-=preview
-        let g:deoplete#enable_at_startup = 1
 	" }
 
 	" Vim Go {
@@ -181,6 +180,7 @@
         let g:go_auto_sameids = 0
         let g:go_addtags_transform = "camelcase"
         let g:go_fmt_command = "goimports"
+        let g:go_info_mode='guru'
 
         au FileType go nmap <D-d> :GoDeclsDir<cr>
         au FileType go nmap <leader><leader>g <Plug>(go-def)
@@ -232,6 +232,18 @@
         let g:NERDCommentEmptyLines = 1
         let g:NERDTrimTrailingWhitespace = 1
 	" }
+
+    " Coc {
+        function! s:check_back_space() abort
+            let col = col('.') - 1
+            return !col || getline('.')[col - 1]  =~ '\s'
+        endfunction
+
+        inoremap <silent><expr> <TAB>
+                    \ pumvisible() ? "\<C-n>" :
+                    \ <SID>check_back_space() ? "\<TAB>" :
+                    \ coc#refresh()
+    " }
 
 	" Supertab {
         let g:SuperTabDefaultCompletionType = "context"

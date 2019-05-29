@@ -42,6 +42,8 @@
     Plug 'mhinz/vim-startify'
     Plug 'matze/vim-move'
     Plug 'sheerun/vim-polyglot'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
     Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
     " Or install latest release tag
     Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
@@ -193,14 +195,10 @@
         au FileType go nmap <leader>gg :GoCoverageToggle -short<cr>
 	" }
 
-    " emmet {
-        let g:user_emmet_leader_key = '<Tab>'
-        let g:user_emmet_settings = {
-                    \  'javascript' : {
-                    \      'extends': 'js',
-                    \  },
-                    \}
-    " }
+	" Emmet {
+		let g:user_emmet_expandabbr_key = '<Tab>'
+		let g:use_emmet_complete_tag = 1
+	" }
 
 	" fzf {
         let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores --ignore .git -l -g ""'

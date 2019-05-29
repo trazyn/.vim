@@ -28,21 +28,20 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'ervandew/supertab'
     Plug 'majutsushi/tagbar'
-    Plug 'bling/vim-airline'
-    Plug 'jelera/vim-javascript-syntax'
     Plug 'mattn/emmet-vim'
+    Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
-    Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'sebdah/vim-delve'
     Plug 'paroxayte/vwm.vim'
     Plug 'mhinz/vim-startify'
     Plug 'matze/vim-move'
+    Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
     " Or install latest release tag
     Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
@@ -150,11 +149,14 @@
         let NERDTreeDirArrows = 0
         let NERDTreeHighlightCursorline = 1
         let NERDTreeShowLineNumbers = 0
-        let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$']
+        let NERDTreeIgnore = ['\~$', '\.o$', '\.obj$', '\.out$', '\.a$', '\.swp$', '\.pyc', '\.so$', '\.pyo$', '\.DS_Store$', 'node_modules', 'dist', '\.traineddata$', '\.lock$']
         let NERDTreeBookmarksFile = $HOME . "/.vim/NREDTreeBookmarks"
+        let g:NERDTreeMinimalUI = 1
 	" }
 
 	" Ale {
+        let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+        let g:ale_sign_warning = '.'
         let g:ale_linters = {'go': ['golangci-lint'], 'javascript': ['eslint']}
         let g:ale_go_golangci_lint_package = 1
         let g:ale_go_golangci_lint_options = '--fast'
@@ -190,6 +192,15 @@
         au FileType go nmap <leader>gt :GoTest -short<cr>
         au FileType go nmap <leader>gg :GoCoverageToggle -short<cr>
 	" }
+
+    " emmet {
+        let g:user_emmet_leader_key = '<Tab>'
+        let g:user_emmet_settings = {
+                    \  'javascript' : {
+                    \      'extends': 'js',
+                    \  },
+                    \}
+    " }
 
 	" fzf {
         let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores --ignore .git -l -g ""'
@@ -291,6 +302,8 @@
         endfunction
 
         let g:airline_section_c = '%t %{GetFileSize()} (%{GetCwd()})'
+        let g:airline_extensions = ['branch', 'hunks', 'coc']
+        let g:airline_powerline_fonts = 1
 
         function! AccentDemo()
             let keys = ['a','b','c','d','e','f','g','h']
@@ -323,6 +336,10 @@
                     \ 'Ignored'   : '\#',
                     \ "Unknown"   : "!"
                     \ }
+	" }
+	
+	" JSX {
+        let g:jsx_ext_required = 0
 	" }
 " }
 

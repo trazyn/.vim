@@ -38,12 +38,11 @@
     Plug 'tpope/vim-fugitive'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'sebdah/vim-delve'
-    Plug 'paroxayte/vwm.vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'maxmellon/vim-jsx-pretty'
     Plug 'mhinz/vim-startify'
     Plug 'matze/vim-move'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
+    Plug 'junegunn/vim-easy-align'
     Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
     " Or install latest release tag
     Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
@@ -157,8 +156,6 @@
 	" }
 
 	" Ale {
-        let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-        let g:ale_sign_warning = '.'
         let g:ale_linters = {'go': ['golangci-lint'], 'javascript': ['eslint']}
         let g:ale_go_golangci_lint_package = 1
         let g:ale_go_golangci_lint_options = '--fast'
@@ -168,6 +165,14 @@
 	" Python Mode {
 		let g:pymode_folding = 0
 		let g:pymode_rope = 0
+	" }
+
+	" Easy Align {
+        " Start interactive EasyAlign in visual mode (e.g. vipga)
+        xmap ga <Plug>(EasyAlign)
+
+        " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+        nmap ga <Plug>(EasyAlign)
 	" }
 
 	" Vim Go {
@@ -185,6 +190,8 @@
         let g:go_addtags_transform = "camelcase"
         let g:go_fmt_command = "goimports"
         let g:go_info_mode='guru'
+        let g:go_def_mode='gopls'
+        let g:go_info_mode='gopls'
 
         au FileType go nmap <D-d> :GoDeclsDir<cr>
         au FileType go nmap <leader><leader>g <Plug>(go-def)
@@ -338,6 +345,19 @@
 	
 	" JSX {
         let g:jsx_ext_required = 0
+	" }
+
+	" Ctrilspace {
+        if has("gui_running")
+            " Settings for MacVim and Inconsolata font
+            let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
+        endif
+
+        if executable("ag")
+            let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+        endif
+        let g:CtrlSpaceSearchTiming = 500
+        nnoremap <silent><C-p> :CtrlSpace O<CR>
 	" }
 " }
 

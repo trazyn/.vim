@@ -26,9 +26,6 @@
     Plug 'w0rp/ale'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'ervandew/supertab'
-    Plug 'majutsushi/tagbar'
-    Plug 'mattn/emmet-vim'
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
@@ -43,11 +40,8 @@
     Plug 'mhinz/vim-startify'
     Plug 'matze/vim-move'
     Plug 'junegunn/vim-easy-align'
-    Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-    " Or install latest release tag
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-    " Or build from source code
-    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'liuchengxu/vista.vim'
     call plug#end()
 " }
 
@@ -162,11 +156,6 @@
         let g:ale_javascript_prettier_use_local_config = 1
 	" }
 
-	" Python Mode {
-		let g:pymode_folding = 0
-		let g:pymode_rope = 0
-	" }
-
 	" Easy Align {
         " Start interactive EasyAlign in visual mode (e.g. vipga)
         xmap ga <Plug>(EasyAlign)
@@ -187,7 +176,7 @@
         let g:go_highlight_types = 1
         let g:go_version_warning = 0
         let g:go_auto_sameids = 0
-        let g:go_addtags_transform = "camelcase"
+        " let g:go_addtags_transform = "camelcase"
         let g:go_fmt_command = "goimports"
         let g:go_info_mode='guru'
         let g:go_def_mode='gopls'
@@ -200,11 +189,6 @@
         au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
         au FileType go nmap <leader>gt :GoTest -short<cr>
         au FileType go nmap <leader>gg :GoCoverageToggle -short<cr>
-	" }
-
-	" Emmet {
-		let g:user_emmet_expandabbr_key = '<Tab>'
-		let g:use_emmet_complete_tag = 1
 	" }
 
 	" fzf {
@@ -250,21 +234,70 @@
 	" }
 
     " Coc {
+         let g:coc_global_extensions = [
+               \ 'coc-lists',
+               \ 'coc-prettier',
+               \ 'coc-go',
+               \ 'coc-python',
+               \ 'coc-json',
+               \ 'coc-yaml',
+               \ 'coc-markdownlint',
+               \]
+
+        " Use tab for trigger completion with characters ahead and navigate.
+        " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+        inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
         function! s:check_back_space() abort
-            let col = col('.') - 1
-            return !col || getline('.')[col - 1]  =~ '\s'
+          let col = col('.') - 1
+          return !col || getline('.')[col - 1]  =~# '\s'
         endfunction
 
-        inoremap <silent><expr> <TAB>
-                    \ pumvisible() ? "\<C-n>" :
-                    \ <SID>check_back_space() ? "\<TAB>" :
-                    \ coc#refresh()
+        nmap <leader>rn <Plug>(coc-rename)
+        " Show all diagnostics
+        nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+        " Manage extensions
+        nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+        " Show commands
+        nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+        " Find symbol of current document
+        nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+        " Search workspace symbols
+        nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+        " Do default action for next item.
+        nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+        " Do default action for previous item.
+        nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+        " Resume latest coc list
+        nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+        " Show document
+        nnoremap <silent> Z :call <SID>show_documentation()<CR>
+        function! s:show_documentation()
+            if (index(['vim','help'], &filetype) >= 0)
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
+
+        " Add status line support, for integration with other plugin, checkout `:h coc-status`
+        set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
     " }
 
-	" Supertab {
-        let g:SuperTabDefaultCompletionType = "context"
-        let g:SuperTabClosePreviewOnPopupClose = 1
-	" }
+	" Vista {
+        let g:vista_fzf_preview = ['right:50%']
+        let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+        let g:vista_default_executive = 'coc'
+        let g:vista#renderer#enable_icon = 1
+        let g:vista#renderer#icons = {
+                    \   "function": "\uf794",
+                    \   "variable": "\uf71b",
+                    \  }
+        " }
 
 	" Indent Guides {
         let g:indent_guides_enable_on_vim_startup = 1
@@ -277,18 +310,18 @@
 	" Airline {
         let g:airline_theme = "kolor"
         let g:airline_mode_map = {
-					\ '__' : '-',
-					\ 'n'  : 'N',
-					\ 'i'  : 'I',
-					\ 'R'  : 'R',
-					\ 'c'  : 'C',
-					\ 'v'  : 'V',
-					\ 'V'  : 'V',
-					\ '' : 'V',
-					\ 's'  : 'S',
-					\ 'S'  : 'S',
-					\ '' : 'S',
-					\ }
+                    \ '__' : '-',
+                    \ 'n'  : 'N',
+                    \ 'i'  : 'I',
+                    \ 'R'  : 'R',
+                    \ 'c'  : 'C',
+                    \ 'v'  : 'V',
+                    \ 'V'  : 'V',
+                    \ '' : 'V',
+                    \ 's'  : 'S',
+                    \ 'S'  : 'S',
+                    \ '' : 'S',
+                    \ }
         function! GetCwd()
             let currentdir = substitute(getcwd(), expand("$HOME"), "~", "g")
             return currentdir
@@ -378,7 +411,7 @@
         nmap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
         nmap <leader>n :NERDTreeToggle<CR>
-        nmap <leader>m :TagbarToggle<CR>
+        nmap <leader>m :Vista!!<CR>
 
         " Split {
             nmap <leader>s :sp <C-R>=expand("%:h")."/"<CR>
@@ -403,5 +436,6 @@
             nmap <D-r> :Files<CR>
             nmap <D-e> :Buffers<CR>
             nmap <D-l> :Ag<CR>
+            nmap <D-/> :Startify<CR>
         " }
 " }

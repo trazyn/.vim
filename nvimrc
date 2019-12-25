@@ -38,7 +38,6 @@
     Plug 'pangloss/vim-javascript'
     Plug 'maxmellon/vim-jsx-pretty'
     Plug 'mhinz/vim-startify'
-    Plug 'matze/vim-move'
     Plug 'junegunn/vim-easy-align'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'liuchengxu/vista.vim'
@@ -127,12 +126,9 @@
             set guioptions-=R
             set guioptions-=r
             set guioptions-=b
-
-            set lines=40
-            set columns=166
         endif
-
         colorscheme palenight
+        hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
     " }
 " }
 
@@ -236,9 +232,6 @@
     " Coc {
          let g:coc_global_extensions = [
                \ 'coc-lists',
-               \ 'coc-prettier',
-               \ 'coc-go',
-               \ 'coc-python',
                \ 'coc-json',
                \ 'coc-yaml',
                \ 'coc-markdownlint',
@@ -341,7 +334,7 @@
 
         let g:airline_section_c = '%t %{GetFileSize()} (%{GetCwd()})'
         let g:airline_extensions = ['branch', 'hunks', 'coc']
-        let g:airline_powerline_fonts = 1
+        let g:airline_powerline_fonts = 0
 
         function! AccentDemo()
             let keys = ['a','b','c','d','e','f','g','h']
@@ -435,7 +428,8 @@
         " Mac {
             nmap <D-r> :Files<CR>
             nmap <D-e> :Buffers<CR>
-            nmap <D-l> :Ag<CR>
+            nmap <D-f> :Rg<CR>
+            nmap <D-s> :Lines<CR>
             nmap <D-/> :Startify<CR>
         " }
 " }

@@ -1,0 +1,17 @@
+{
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "args": [],
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"]
+        }
+    },
+    "suggest.echodocSupport": true,
+    "suggest.maxCompleteItemCount": 20,
+    "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact"],
+    "suggest.snippetIndicator": " →",
+    "diagnostic.errorSign": "#",
+    "diagnostic.warningSign": "*",
+    "diagnostic.infoSign": "•"
+}

@@ -18,6 +18,7 @@
     set rtp+=/usr/local/opt/fzf
 
     call plug#begin('~/.config/nvim/plugged')
+    Plug 'honza/vim-snippets'
     Plug 'scrooloose/nerdtree'
     Plug 'flazz/vim-colorschemes'
     Plug 'drewtempelmeyer/palenight.vim'
@@ -231,7 +232,7 @@
 
     " Coc {
          let g:coc_global_extensions = [
-               \ 'coc-lists',
+               \ 'coc-snippets',
                \ 'coc-json',
                \ 'coc-yaml',
                \ 'coc-markdownlint',
@@ -249,6 +250,19 @@
           let col = col('.') - 1
           return !col || getline('.')[col - 1]  =~# '\s'
         endfunction
+
+        inoremap <silent><expr> <TAB>
+                    \ pumvisible() ? coc#_select_confirm() :
+                    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+                    \ <SID>check_back_space() ? "\<TAB>" :
+                    \ coc#refresh()
+
+        function! s:check_back_space() abort
+            let col = col('.') - 1
+            return !col || getline('.')[col - 1]  =~# '\s'
+        endfunction
+
+        let g:coc_snippet_next = '<tab>'
 
         nmap <leader>rn <Plug>(coc-rename)
         " Show all diagnostics

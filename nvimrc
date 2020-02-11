@@ -42,6 +42,7 @@
     Plug 'junegunn/vim-easy-align'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'liuchengxu/vista.vim'
+    Plug 'rust-lang/rust.vim'
     call plug#end()
 " }
 
@@ -180,10 +181,6 @@
         let g:go_info_mode='gopls'
 
         au FileType go nmap <D-d> :GoDeclsDir<cr>
-        au FileType go nmap <leader><leader>g <Plug>(go-def)
-        au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-        au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-        au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
         au FileType go nmap <leader>gt :GoTest -short<cr>
         au FileType go nmap <leader>gg :GoCoverageToggle -short<cr>
 	" }
@@ -264,7 +261,12 @@
 
         let g:coc_snippet_next = '<tab>'
 
-        nmap <leader>rn <Plug>(coc-rename)
+        " Remap keys for gotos
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
+
         " Show all diagnostics
         nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
         " Manage extensions

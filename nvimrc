@@ -20,7 +20,6 @@
     call plug#begin('~/.config/nvim/plugged')
     Plug 'honza/vim-snippets'
     Plug 'scrooloose/nerdtree'
-    Plug 'flazz/vim-colorschemes'
     Plug 'drewtempelmeyer/palenight.vim'
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
@@ -42,7 +41,6 @@
     Plug 'junegunn/vim-easy-align'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'liuchengxu/vista.vim'
-    Plug 'rust-lang/rust.vim'
     call plug#end()
 " }
 
@@ -131,6 +129,8 @@
         endif
         colorscheme palenight
         hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+
+        let g:lightline = { 'colorscheme': 'palenight' }
     " }
 " }
 
@@ -200,20 +200,60 @@
         " [Commands] --expect expression for directly executing the command
         let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
-        let g:fzf_colors = {
-                    \ 'fg':      ['fg', 'Normal'],
+        let g:fzf_colors =
+                    \ {
                     \ 'bg':      ['bg', 'Normal'],
-                    \ 'hl':      ['fg', 'Comment'],
-                    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-                    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+                    \ 'hl':      ['fg', 'String'],
                     \ 'hl+':     ['fg', 'Statement'],
-                    \ 'info':    ['fg', 'PreProc'],
-                    \ 'prompt':  ['fg', 'Conditional'],
-                    \ 'pointer': ['fg', 'Exception'],
+                    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+                    \ 'bg+':     ['bg', 'DiffAdd', 'CursorColumn'],
+                    \ 'info':    ['fg', 'Keyword'],
+                    \ 'border':  ['fg', 'Ignore'],
+                    \ 'prompt':  ['fg', 'Statement'],
+                    \ 'pointer': ['fg', 'Statement'],
                     \ 'marker':  ['fg', 'Keyword'],
                     \ 'spinner': ['fg', 'Label'],
                     \ 'header':  ['fg', 'Comment']
                     \ }
+
+        command! -bang -nargs=? -complete=dir Files
+                    \ call fzf#vim#files(<q-args>, {'options': ['--info=inline', '--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
+        command! -bang -nargs=* Rg
+                    \ call fzf#vim#grep(
+                    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+                    \   fzf#vim#with_preview(), <bang>0)
+
+        function! FloatingFZF()
+            let buf = nvim_create_buf(v:false, v:true)
+
+            " here be dragoons
+            let height = &lines - 12
+            let width = float2nr(&columns - (&columns * 3 / 10))
+            let col = float2nr((&columns - width) / 2)
+
+            let opts = {
+                        \ 'relative': 'editor',
+                        \ 'row': 5,
+                        \ 'col': col,
+                        \ 'width': width,
+                        \ 'height': height,
+                        \ 'style': 'minimal'
+                        \ }
+
+            let win = nvim_open_win(buf, v:true, opts)
+            call setwinvar(win, '&winhl', 'NormalFloat:TabLine')
+
+            " this is to remove all line numbers and so on from the window
+            setlocal
+                        \ buftype=nofile
+                        \ nobuflisted
+                        \ bufhidden=hide
+                        \ nonumber
+                        \ norelativenumber
+                        \ signcolumn=no
+        endfunction
+        let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
         autocmd! FileType fzf
         autocmd  FileType fzf set laststatus=0 noshowmode noruler
@@ -387,19 +427,6 @@
 	
 	" JSX {
         let g:jsx_ext_required = 0
-	" }
-
-	" Ctrilspace {
-        if has("gui_running")
-            " Settings for MacVim and Inconsolata font
-            let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
-        endif
-
-        if executable("ag")
-            let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
-        endif
-        let g:CtrlSpaceSearchTiming = 500
-        nnoremap <silent><C-p> :CtrlSpace O<CR>
 	" }
 " }
 
